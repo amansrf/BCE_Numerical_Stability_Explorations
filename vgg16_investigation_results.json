@@ -1,0 +1,206 @@
+[
+  {
+    "epochs": [
+      {
+        "epoch": 0,
+        "train_loss": 35.23170359859912,
+        "train_acc": 0.8354610800516066,
+        "test_loss": 0.22957574862861022,
+        "test_acc": 0.9044183949504058
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.2154000470161057,
+        "train_acc": 0.9098728266879647,
+        "test_loss": 0.2352416834678001,
+        "test_acc": 0.8989580202384531
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.19999805640246393,
+        "train_acc": 0.916391226884561,
+        "test_loss": 0.20117627731748816,
+        "test_acc": 0.9153391443743112
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.19385722251828108,
+        "train_acc": 0.9189346931252688,
+        "test_loss": 0.19268314829421848,
+        "test_acc": 0.9199979961927662
+      }
+    ],
+    "config": {
+      "init_type": "raschka",
+      "use_logits": true,
+      "num_epochs": 4,
+      "batch_size": 256,
+      "lr": 0.001,
+      "seed": 42
+    },
+    "initial_state": {
+      "logit_mean": -124.38862609863281,
+      "logit_std": 337.9264221191406,
+      "logit_min": -1038.5897216796875,
+      "logit_max": 691.304931640625,
+      "sigmoid_mean": 0.40546196699142456,
+      "sigmoid_min": 0.0,
+      "sigmoid_max": 1.0,
+      "sigmoid_saturated": 0.9921875
+    },
+    "final_test_acc": 0.9199979961927662
+  },
+  {
+    "epochs": [
+      {
+        "epoch": 0,
+        "train_loss": 52.02961087143377,
+        "train_acc": 0.47969527554217606,
+        "test_loss": 49.969942929713426,
+        "test_acc": 0.5003005710850617
+      },
+      {
+        "epoch": 1,
+        "train_loss": 52.030472449766535,
+        "train_acc": 0.47969527554217606,
+        "test_loss": 49.969942929713426,
+        "test_acc": 0.5003005710850617
+      },
+      {
+        "epoch": 2,
+        "train_loss": 52.030472446719834,
+        "train_acc": 0.47969527554217606,
+        "test_loss": 49.969942929713426,
+        "test_acc": 0.5003005710850617
+      },
+      {
+        "epoch": 3,
+        "train_loss": 52.0304724469542,
+        "train_acc": 0.47969527554217606,
+        "test_loss": 49.969942929713426,
+        "test_acc": 0.5003005710850617
+      }
+    ],
+    "config": {
+      "init_type": "raschka",
+      "use_logits": false,
+      "num_epochs": 4,
+      "batch_size": 256,
+      "lr": 0.001,
+      "seed": 42
+    },
+    "initial_state": {
+      "logit_mean": -124.38862609863281,
+      "logit_std": 337.9264221191406,
+      "logit_min": -1038.5897216796875,
+      "logit_max": 691.304931640625,
+      "sigmoid_mean": 0.40546196699142456,
+      "sigmoid_min": 0.0,
+      "sigmoid_max": 1.0,
+      "sigmoid_saturated": 0.9921875
+    },
+    "final_test_acc": 0.5003005710850617
+  },
+  {
+    "epochs": [
+      {
+        "epoch": 0,
+        "train_loss": 0.7275877059088253,
+        "train_acc": 0.5160471831418566,
+        "test_loss": 0.6937170099094174,
+        "test_acc": 0.4996994289149384
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.6333855556546012,
+        "train_acc": 0.5969957608895988,
+        "test_loss": 0.2668613498727588,
+        "test_acc": 0.8875363190061116
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.21216718616932054,
+        "train_acc": 0.9116544817841126,
+        "test_loss": 0.1925214860681995,
+        "test_acc": 0.9204488528203587
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.18745493776324984,
+        "train_acc": 0.9223566996375253,
+        "test_loss": 0.18874312078662558,
+        "test_acc": 0.9218014227031359
+      }
+    ],
+    "config": {
+      "init_type": "proper",
+      "use_logits": true,
+      "num_epochs": 4,
+      "batch_size": 256,
+      "lr": 0.001,
+      "seed": 42
+    },
+    "initial_state": {
+      "logit_mean": -0.007816450670361519,
+      "logit_std": 0.02130929008126259,
+      "logit_min": -0.06526721268892288,
+      "logit_max": 0.04380077123641968,
+      "sigmoid_mean": 0.4980461597442627,
+      "sigmoid_min": 0.48368895053863525,
+      "sigmoid_max": 0.5109484195709229,
+      "sigmoid_saturated": 0.0
+    },
+    "final_test_acc": 0.9218014227031359
+  },
+  {
+    "epochs": [
+      {
+        "epoch": 0,
+        "train_loss": 0.7584843219040638,
+        "train_acc": 0.5185783621060392,
+        "test_loss": 0.6939335855689057,
+        "test_acc": 0.4996994289149384
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.6923921596962191,
+        "train_acc": 0.5203170117343491,
+        "test_loss": 0.6940724783115236,
+        "test_acc": 0.4996994289149384
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.6923664388671557,
+        "train_acc": 0.5203047244578239,
+        "test_loss": 0.6938026647877805,
+        "test_acc": 0.4996994289149384
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.6923661901967388,
+        "train_acc": 0.5203047244578239,
+        "test_loss": 0.6941493028761234,
+        "test_acc": 0.4996994289149384
+      }
+    ],
+    "config": {
+      "init_type": "proper",
+      "use_logits": false,
+      "num_epochs": 4,
+      "batch_size": 256,
+      "lr": 0.001,
+      "seed": 42
+    },
+    "initial_state": {
+      "logit_mean": -0.007816450670361519,
+      "logit_std": 0.02130929008126259,
+      "logit_min": -0.06526721268892288,
+      "logit_max": 0.04380077123641968,
+      "sigmoid_mean": 0.4980461597442627,
+      "sigmoid_min": 0.48368895053863525,
+      "sigmoid_max": 0.5109484195709229,
+      "sigmoid_saturated": 0.0
+    },
+    "final_test_acc": 0.4996994289149384
+  }
+]

@@ -17,7 +17,28 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import time
+import sys
 import argparse
+from pathlib import Path
+
+
+def check_working_directory():
+    """Ensure script is run from the 02_deep_networks directory."""
+    cwd = Path.cwd()
+    script_name = "proper_init_comparison.py"
+    required_import = "vgg16_bce_investigation.py"
+
+    if not Path(script_name).exists() or not Path(required_import).exists():
+        print(f"Error: This script must be run from the 02_deep_networks directory.")
+        print(f"Current directory: {cwd}")
+        print(f"\nTo run correctly:")
+        print(f"  cd 02_deep_networks")
+        print(f"  python {script_name}")
+        sys.exit(1)
+
+
+check_working_directory()
+
 from vgg16_bce_investigation import VGG16, init_proper, get_celeba_loaders
 
 

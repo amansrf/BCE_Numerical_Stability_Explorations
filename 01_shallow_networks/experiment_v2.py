@@ -16,6 +16,7 @@ from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
 import matplotlib.pyplot as plt
 import random
+import sys
 from collections import defaultdict
 from pathlib import Path
 import pickle
@@ -26,6 +27,23 @@ from scipy import stats
 from dataclasses import dataclass
 from typing import Dict, List, Tuple
 from torch.utils.tensorboard import SummaryWriter
+
+
+def check_working_directory():
+    """Ensure script is run from the 01_shallow_networks directory."""
+    cwd = Path.cwd()
+    script_name = "experiment_v2.py"
+
+    if not Path(script_name).exists():
+        print(f"Error: This script must be run from the 01_shallow_networks directory.")
+        print(f"Current directory: {cwd}")
+        print(f"\nTo run correctly:")
+        print(f"  cd 01_shallow_networks")
+        print(f"  python {script_name}")
+        sys.exit(1)
+
+
+check_working_directory()
 
 DEVICE = torch.device("cpu")
 
@@ -718,7 +736,7 @@ def run_full_experiment(
     epochs: int = 50,
     lr: float = 1e-3,
     n_workers: int = None,
-    log_dir: str = 'runs_v2',
+    log_dir: str = 'tensorboard/runs_v2',
     optimizer_type: str = 'adamw'
 ) -> Dict:
     """Run full grid experiment with parallel execution."""
@@ -869,7 +887,7 @@ def print_detailed_comparison(aggregated: Dict, stat_tests: Dict):
 # PLOTTING
 # =============================================================================
 
-def plot_results(all_results: Dict, aggregated: Dict, save_dir: str = 'plots_v2'):
+def plot_results(all_results: Dict, aggregated: Dict, save_dir: str = 'results/plots_v2'):
     """Create comprehensive visualizations."""
     Path(save_dir).mkdir(exist_ok=True)
 
@@ -1055,7 +1073,7 @@ if __name__ == "__main__":
     print(f"  Epochs: {EPOCHS}")
     print(f"  Total runs: {len(SEEDS) * len(N_POSITIVE_LIST) * len(WEIGHT_DECAYS) * 2}")
 
-    LOG_DIR = f'runs_v2{SUFFIX}'
+    LOG_DIR = f'tensorboard/runs_v2{SUFFIX}'
 
     # Run experiment
     all_results = run_full_experiment(
@@ -1080,7 +1098,7 @@ if __name__ == "__main__":
     print_detailed_comparison(aggregated, stat_tests)
 
     # Plot
-    plot_results(all_results, aggregated, save_dir=f'plots_v2{SUFFIX}')
+    plot_results(all_results, aggregated, save_dir=f'results/plots_v2{SUFFIX}')
 
     # Save results
     output = {
@@ -1098,12 +1116,12 @@ if __name__ == "__main__":
         }
     }
 
-    results_file = f'experiment_results_v2{SUFFIX}.pkl'
+    results_file = f'results/experiment_results_v2{SUFFIX}.pkl'
     with open(results_file, 'wb') as f:
         pickle.dump(output, f)
 
     print("\nResults saved to:")
     print(f"  - {results_file}")
-    print(f"  - plots_v2{SUFFIX}/")
+    print(f"  - results/plots_v2{SUFFIX}/")
     print(f"  - {LOG_DIR}/ (TensorBoard logs)")
     print(f"\nTo view TensorBoard: tensorboard --logdir={LOG_DIR}")

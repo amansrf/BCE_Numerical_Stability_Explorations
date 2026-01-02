@@ -10,8 +10,7 @@ wheels/
 .venv
 
 #Datasets
-data/
-celebA/
+data/*
 
 # Claude
 .claude/

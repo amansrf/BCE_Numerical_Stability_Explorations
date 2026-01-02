@@ -12,12 +12,30 @@ from torch.utils.tensorboard import SummaryWriter
 import numpy as np
 import matplotlib.pyplot as plt
 import random
+import sys
 from collections import defaultdict
 from pathlib import Path
 import pickle
 from tqdm import tqdm
 from concurrent.futures import ProcessPoolExecutor
 import multiprocessing as mp
+
+
+def check_working_directory():
+    """Ensure script is run from the 01_shallow_networks directory."""
+    cwd = Path.cwd()
+    script_name = "experiment.py"
+
+    if not Path(script_name).exists():
+        print(f"Error: This script must be run from the 01_shallow_networks directory.")
+        print(f"Current directory: {cwd}")
+        print(f"\nTo run correctly:")
+        print(f"  cd 01_shallow_networks")
+        print(f"  python {script_name}")
+        sys.exit(1)
+
+
+check_working_directory()
 
 # def get_device():
 #     if torch.cuda.is_available():

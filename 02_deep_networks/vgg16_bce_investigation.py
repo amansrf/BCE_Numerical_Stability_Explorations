@@ -23,10 +23,29 @@ import numpy as np
 from pathlib import Path
 from collections import defaultdict
 import time
+import sys
 from tqdm import tqdm
 from torch.utils.tensorboard import SummaryWriter
 import json
 import argparse
+
+
+def check_working_directory():
+    """Ensure script is run from the 02_deep_networks directory."""
+    cwd = Path.cwd()
+    expected_marker = Path("../data/celeba")
+    script_name = "vgg16_bce_investigation.py"
+
+    if not expected_marker.exists() or not Path(script_name).exists():
+        print(f"Error: This script must be run from the 02_deep_networks directory.")
+        print(f"Current directory: {cwd}")
+        print(f"\nTo run correctly:")
+        print(f"  cd 02_deep_networks")
+        print(f"  python {script_name}")
+        sys.exit(1)
+
+
+check_working_directory()
 
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -177,11 +196,11 @@ def get_celeba_loaders(batch_size, num_workers=4):
         return attr[31]
 
     train_dataset = datasets.CelebA(
-        root='./celeba', split='train', transform=transform,
+        root='../data/celeba', split='train', transform=transform,
         target_type='attr', target_transform=get_smile, download=True
     )
     test_dataset = datasets.CelebA(
-        root='./celeba', split='test', transform=transform,
+        root='../data/celeba', split='test', transform=transform,
         target_type='attr', target_transform=get_smile, download=True
     )
 

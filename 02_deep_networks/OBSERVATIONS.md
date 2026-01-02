@@ -227,6 +227,49 @@ Lower LR does NOT help with Raschka init because the problem is the initial stat
 | Raschka | Initial saturation (99.2%) | No - damage before training |
 | Proper | Explosion during training | Yes - prevents explosion |
 
+## Fair Comparison: Proper Init + Lower LR
+
+When saturation is avoided entirely, are the losses equivalent?
+
+**Script:** `proper_init_comparison.py`
+
+```
+Init: Proper (Kaiming + Xavier)
+LR: 0.0001
+Epochs: 10
+
+BCEWithLogitsLoss:
+Epoch  Train Loss   Train Acc    Test Acc
+1      0.2770       0.8691       0.9189
+...
+10     0.0738       0.9701       0.9199
+
+BCELoss:
+Epoch  Train Loss   Train Acc    Test Acc
+1      0.2801       0.8675       0.9196
+...
+10     0.0711       0.9716       0.9198
+
+FINAL:
+BCEWithLogitsLoss         0.9701             0.9199
+BCELoss                   0.9716             0.9198
+
+Difference: +0.01 percentage points
+```
+
+**Conclusion: Both losses perform identically when saturation is avoided.**
+
+## The Complete Picture
+
+| Scenario | BCEWithLogitsLoss | BCELoss | Winner |
+|----------|-------------------|---------|--------|
+| Raschka init + lr=0.001 | 92% | 50% | BCEWithLogits |
+| Raschka init + lr=0.0001 | 91% | 50% | BCEWithLogits |
+| Proper init + lr=0.001 | 92% | 50% | BCEWithLogits |
+| Proper init + lr=0.0001 | **92%** | **92%** | **Tie** |
+
+BCEWithLogitsLoss is strictly better because it handles all scenarios. BCELoss only matches it when everything is perfectly configured to avoid saturation.
+
 ## Code Reference
 
 The investigation script is in `vgg16_bce_investigation.py`. Key experiments:
